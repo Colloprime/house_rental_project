@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MessDetectorOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCSFixerOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PHPCodeSnifferOptionsConfiguration">
+    <option name="highlightLevel" value="WARNING" />
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/rental_house/vendor/bootstrap/js" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/src" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/bootstrap/scss" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/client" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Redact" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Verify" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/User" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Conversion" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Conversations" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Call" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Response" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Application" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Insights" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Network" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Entity" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Account" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Message" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/fontawesome-free/svgs" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Voice" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/zendframework/zend-diactoros" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/fontawesome-free/scss" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/fontawesome-free/sprites" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/nexmo/Numbers" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/fontawesome-free/less" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/composer" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/fontawesome-free/css" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/fontawesome-free/webfonts" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/php-http/promise" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/fontawesome-free/js" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/php-http/httplug" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/php-http/guzzle6-adapter" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/rental_house/vendor/lcobucci/jwt" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.1">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
+  <component name="PhpStanOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+  <component name="PsalmOptionsConfiguration">
+    <option name="transferred" value="true" />
+  </component>
+</project>

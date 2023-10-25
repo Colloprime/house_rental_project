@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/rental_house/PHPMailer/src" isTestSource="false" packagePrefix="PHPMailer\PHPMailer\" />
+      <sourceFolder url="file://$MODULE_DIR$/rental_house/PHPMailer/test" isTestSource="true" packagePrefix="PHPMailer\Test\" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/bootstrap/js" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/bootstrap/scss" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/fontawesome-free/css" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/fontawesome-free/js" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/fontawesome-free/less" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/fontawesome-free/scss" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/fontawesome-free/sprites" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/fontawesome-free/svgs" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/fontawesome-free/webfonts" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Account" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Application" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Call" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Conversations" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Conversion" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Entity" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Insights" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Message" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Network" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Numbers" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Redact" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Response" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/User" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Verify" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/Voice" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/client" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/nexmo/src" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/php-http/guzzle6-adapter" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/php-http/httplug" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/php-http/promise" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/rental_house/vendor/zendframework/zend-diactoros" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
