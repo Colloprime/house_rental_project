@@ -28,10 +28,10 @@ if(isset($_POST["submit"])){
     if (!is_numeric($pno)) {
       $pnoErr = "The phone number should not contain letters";
       echo "<script> alert('$pnoErr');</script>";
-    }elseif (strlen($pno) > 12) {
+    }elseif (strlen($pno) > 10) {
       $pnoErr = "The phone number is too long";
       echo "<script> alert('$pnoErr');</script>";
-    }elseif (strlen($pno) < 12) {
+    }elseif (strlen($pno) < 10) {
       $pnoErr = "The phone number is too short";
       echo "<script> alert('$pnoErr');</script>";
     }else {
@@ -113,7 +113,7 @@ if(isset($_POST["submit"])){
 
                 <div class="form-group row">
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" name="pno1" value="<?php echo @$pno; ?>" placeholder="Phone Number e.g; 255717******" required>
+                    <input type="text" class="form-control form-control-user" name="pno1" value="<?php echo @$pno; ?>" placeholder="Phone Number e.g; 0717*****" required>
                   </div>
 
                   <div class="col-sm-6 mb-3 mb-sm-0">

@@ -41,7 +41,7 @@ if(!$_SESSION['username']){
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
 
-        <div class="sidebar-brand-text mx-3">Online House Rental Management System</div>
+        <div class="sidebar-brand-text mx-3">OHRMS</div>
       </a>
 
       <!-- Divider -->
@@ -208,7 +208,7 @@ if(!$_SESSION['username']){
                     $total = 0;
                     do{
                       do {
-                        $cid = $row3['contract_id'];
+                        // $cid = $row3['contract_id'];
                         $ref = $row['ref_no'];
                         $amount = $row['amount'];
                         $from = $row['pay_from'];

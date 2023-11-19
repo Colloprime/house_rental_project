@@ -1,4 +1,4 @@
-<?php
+ <?php
 session_start();
 include "conn.php";
 $id = $_GET['id'];

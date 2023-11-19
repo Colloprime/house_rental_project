@@ -246,6 +246,16 @@ if (isset($_POST['submit'])) {
        </li>
        <hr class="sidebar-divider">
 
+         <!-- Nav Item - Charts -->
+         <li class="nav-item">
+             <a class="nav-link" href="send-sms.php">
+                 <i class="fas fa-fw fa-comments"></i>
+                 <span>Messaging</span></a>
+         </li>
+         <hr class="sidebar-divider">
+
+
+
        <!-- Nav Item - Charts -->
        <li class="nav-item">
          <a class="nav-link">
@@ -323,7 +333,7 @@ if (isset($_POST['submit'])) {
 
          <!-- Begin Page Content -->
          <div class="container-fluid">
-           <h1 class="h3 mb-2 text-gray-800" align="center">Mpesa Payment</h1>
+           <h1 class="h3 mb-2 text-gray-800" align="center">Rent Payment</h1>
 
            <div class="card shadow mb-4">
              <div class="card-body">
@@ -346,9 +356,15 @@ if (isset($_POST['submit'])) {
                      </tr>
                      <tr>
                        <td>
-                         Your PIN Number:
+                         Payment Method:
                        </td>
-                       <td><input type='password' class='form-control form-control-user' name='pin'></td>
+                       <td>
+                          <select name="payment" id="payment">
+                            <option value="mpesa">Mpesa</option>
+                            <option value="equity">Equity</option>
+                            <option value="paypal">Paypal</option>
+                            <option value="payoneer">Payoneer</option>
+                          </select>
                      </tr>
                      <tr>
                        <td>

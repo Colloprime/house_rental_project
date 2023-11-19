@@ -28,7 +28,8 @@ include 'conn.php';
     <link rel="stylesheet" href="css1/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="rents.png">
-
+      <script>(function(w, d) { w.CollectId = "654a718120465d1aa0f19bde"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
+      
   </head>
   <body>
     <!-- navbar-->
@@ -40,7 +41,7 @@ include 'conn.php';
 
       <nav class="navbar navbar-expand-lg">
         <div class="container"><a href="index.php" class="navbar-brand home"><img src="rents.png" alt="OHRMS logo" class="d-none d-md-inline-block"></a>
-          <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="index.php" class="ml-1"><b><b><b><b><b>ONLINE HOUSE RENTAL MANAGEMENT SYSTEM</b></b></b></b></b></a></div>
+          <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="index.php" class="ml-1"><b><b><b><b><b>OHRMS</b></b></b></b></b></a></div>
           <div class="col-lg-6 text-center text-lg-right">
             <ul class="menu list-inline mb-0">
               <li class="list-inline-item"><a href="login.php">Login</a></li>
@@ -70,6 +71,9 @@ include 'conn.php';
             <div class="col-md-12">
               <div id="main-slider" class="owl-carousel owl-theme">
                 <div class="item"><img src="mansion2.jpg" alt="" class="img-fluid"></div>
+                <div class="item"><img src="mansion1.jpg" alt="" class="img-fluid"></div>
+                <div class="item"><img src="h10.jpg" alt="" class="img-fluid"></div>
+                <div class="item"><img src="h8.jpg" alt="" class="img-fluid"></div>
               </div>
               <!-- /#main-slider-->
             </div>
@@ -80,7 +84,7 @@ include 'conn.php';
         *** ADVANTAGES HOMEPAGE ***
         _________________________________________________________
 
-        <!--
+       
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
         -->
@@ -105,7 +109,7 @@ include 'conn.php';
                     </div>
                   </div><a class="invisible"><img src="rent_1.jpg" alt="" class="img-fluid"></a>
                   <div class="text">
-                    <h3><a>List of Houses</a></h3>
+                    <h3><a href="viewhouse.php">List of Houses</a></h3>
                     <p class="price">
                       Available Houses
                     </p>

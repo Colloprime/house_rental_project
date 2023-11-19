@@ -41,7 +41,7 @@ if(isset($_POST['smsg'])){
   try {
       $message = $client->message()->send([
           'to' => "$pno",
-          'from' => '255717812676',
+          'from' => '254717812676',
           'text' => "$msg"
       ]);
 
@@ -97,6 +97,7 @@ if(isset($_POST['smsg'])){
        <!-- Sidebar - Brand -->
        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin_home.php">
 
+
          <div class="sidebar-brand-text mx-3">OHRMS</div>
        </a>
 
@@ -109,6 +110,8 @@ if(isset($_POST['smsg'])){
            <i class="fas fa-fw fa-tachometer-alt"></i>
            <span>Dashboard</span></a>
        </li>
+
+
 
        <!-- Divider -->
        <hr class="sidebar-divider">

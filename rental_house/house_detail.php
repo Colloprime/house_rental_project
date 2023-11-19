@@ -30,6 +30,8 @@ if(!($_SESSION['username'] == "Admin")){
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="rents.png">
 
 </head>
 
@@ -44,7 +46,7 @@ if(!($_SESSION['username'] == "Admin")){
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin_home.php">
 
-        <div class="sidebar-brand-text mx-3">ONLINE HOUSE RENTAL MANAGEMENT SYSTEM</div>
+        <div class="sidebar-brand-text mx-3">OHRMS</div>
       </a>
 
       <!-- Divider -->

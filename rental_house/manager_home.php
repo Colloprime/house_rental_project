@@ -52,7 +52,7 @@ if(!$user && $role == 'Manager'){
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="manager_home.php">
 
-        <div class="sidebar-brand-text mx-3">ONLINE HOUSE RENTAL MANAGEMENT SYSTEM</div>
+        <div class="sidebar-brand-text mx-3">OHRMS</div>
       </a>
 
       <!-- Divider -->

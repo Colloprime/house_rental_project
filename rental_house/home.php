@@ -49,6 +49,7 @@ if(!$_SESSION['username']){
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
+          <a class="nav-link" href="home.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -177,14 +178,19 @@ if(!$_SESSION['username']){
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <h1 class="h3 mb-2 text-gray-800" align="center">Welcome!!</h1>
-          <p class="mb-4"><span style="color:red;">You Occupy <b><b>House: <?php
+          <p class="mb-4"><span style="color:red;">You Occupy <b><b>House:
+           <?php
           $query = "SELECT * FROM tenant WHERE u_name = '$uname' ";
           $result1 = mysqli_query($con, $query);
           $row=mysqli_fetch_assoc($result1);
+
+          if ($row) {
+    
           do{
             $id = $row['tenant_id'];
             $row = mysqli_fetch_assoc($result1);
           }while ($row);
+        }
           $sql = "SELECT * FROM contract WHERE tenant_id = '$id'";
           $result = mysqli_query($con, $sql);
           $row = mysqli_fetch_assoc($result);
@@ -220,17 +226,21 @@ if(!$_SESSION['username']){
                     $query = "SELECT * FROM tenant WHERE u_name = '$uname' ";
                     $result1 = mysqli_query($con, $query);
                     $row=mysqli_fetch_assoc($result1);
+
+                    if ($row) {
+                      $id = $row['tenant_id'];
                     do{
                       $id = $row['tenant_id'];
                       $row = mysqli_fetch_assoc($result1);
                     }while ($row);
+                  }
 
                     $sql = "SELECT * FROM contract WHERE tenant_id = '$id' AND status = 'Active'";
                     $result = mysqli_query($con, $sql);
                     $row = mysqli_fetch_assoc($result);
                     $total = 0;
                     do{
-                      $hid = $row['house_id'];
+                      $h_id = $row['house_id'];
                       $dur = $row['duration_month'];
                       $term = $row['terms'];
                       $div = $dur/$term;

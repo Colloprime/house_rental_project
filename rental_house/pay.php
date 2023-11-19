@@ -100,7 +100,7 @@ if (isset($_POST['submit'])) {
           try {
               $message = $client->message()->send([
                   'to' => "$pno",
-                  'from' => '255621821818',
+                  'from' => '254733832287',
                   'text' => "You have sent Ksh. ".number_format($amount)." to $pno1. Your balance is Ksh.".number_format($balance).". Ref. number: $ref_no on $date. Thank You."
               ]);
 
@@ -120,7 +120,7 @@ if (isset($_POST['submit'])) {
           try {
               $message = $client->message()->send([
                   'to' => "$pno1",
-                  'from' => '255621821818',
+                  'from' => '254733832287',
                   'text' => "You have received Ksh. ".number_format($amount)." from $pno. Your balance is Ksh. ".number_format($balance1).". Ref. number: $ref_no on $date. Thank You."
               ]);
 
@@ -185,7 +185,7 @@ if (isset($_POST['submit'])) {
        <!-- Sidebar - Brand -->
        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home.php">
 
-         <div class="sidebar-brand-text mx-3">Online House Rental Management System</div>
+         <div class="sidebar-brand-text mx-3">OHRMS</div>
        </a>
 
        <!-- Divider -->
@@ -311,7 +311,7 @@ if (isset($_POST['submit'])) {
 
          <!-- Begin Page Content -->
          <div class="container-fluid">
-           <h1 class="h3 mb-2 text-gray-800" align="center">Make Payment</h1>
+           <h1 class="h3 mb-2 text-gray-800" align="center">Rent Payment</h1>
 
            <div class="card shadow mb-4">
              <div class="card-body">
@@ -330,13 +330,21 @@ if (isset($_POST['submit'])) {
                        <td>
                          Receipient's Phone Number:
                        </td>
-                       <td><input type='text' class='form-control form-control-user' name='pno1' value="255717812676" readonly></td>
+                       <td><input type='text' class='form-control form-control-user' name='pno1' value="254733832287" readonly></td>
                      </tr>
                      <tr>
                        <td>
-                         Your PIN Number:
+                         Payment Method:
                        </td>
-                       <td><input type='password' class='form-control form-control-user' name='pin'></td>
+                       <td>
+                          <select name="payment" id="payment">
+                            <option value="mpesa">Mpesa</option>
+                            <option value="equity">Equity</option>
+                            <option value="paypal">Paypal</option>
+                            <option value="payoneer">Payoneer</option>
+                          </select>
+                         
+                         </select></td>
                      </tr>
                      <tr>
                        <td>

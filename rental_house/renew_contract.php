@@ -18,7 +18,7 @@ if(!$_SESSION['username']){
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Rental House Management System</title>
+  <title>Online Rental House Management System</title>
   <link rel="shortcut icon" href="rents.png">
 
   <!-- Custom fonts for this template-->
@@ -42,7 +42,7 @@ if(!$_SESSION['username']){
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home.php">
 
-        <div class="sidebar-brand-text mx-3">Rental House Management System</div>
+        <div class="sidebar-brand-text mx-3">OHRMS</div>
       </a>
 
       <!-- Divider -->

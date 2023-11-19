@@ -151,7 +151,7 @@ if(isset($_POST["login"])){
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block"><img src="house.jpg" alt="Rental House" width="500" height="530" style="opacity:0.6;"></div>
+              <div class="col-lg-6 d-none d-lg-block"><img src="h8.jpg" alt="Rental House" width="500" height="530" style="opacity:0.6;"></div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
@@ -160,7 +160,7 @@ if(isset($_POST["login"])){
                   </div>
                   <form class="user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "POST">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" name="username" aria-describedby="emailHelp" value="<?php echo @$uname; ?>" placeholder="Username">
+                      <input type="text" class="form-control form-control-user" name="username" pattern="[a-zA-Z0-9]+" required aria-describedby="emailHelp" value="<?php echo @$uname; ?>" placeholder="Username">
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" name="password" placeholder="Password">

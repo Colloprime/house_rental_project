@@ -42,7 +42,7 @@ if(!$_SESSION['username']){
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home.php">
 
-        <div class="sidebar-brand-text mx-3">Online House Rental Management System</div>
+        <div class="sidebar-brand-text mx-3">OHRMS</div>
       </a>
 
       <!-- Divider -->
@@ -99,6 +99,17 @@ if(!$_SESSION['username']){
 
       </li>
       <hr class="sidebar-divider">
+
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="send-sms.php">
+                <i class="fas fa-fw fa-comments"></i>
+                <span>Messaging</span></a>
+        </li>
+        <hr class="sidebar-divider">
+
+
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">

@@ -85,7 +85,7 @@ if(isset($_POST["reset"])){
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4"><b><b>ONLINE HOUSE RENTAL MANAGEMENT SYSTEM</b></b><br/><br/>Reset Password</h1>
+                    <h1 class="h4 text-gray-900 mb-4"><b><b>OHRMS</b></b><br/><br/>Reset Password</h1>
                   </div>
                   <form class="user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "POST">
                     <div class="form-group">

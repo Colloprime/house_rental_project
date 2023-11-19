@@ -60,7 +60,7 @@ function check($data){
        <!-- Sidebar - Brand -->
        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin_home.php">
 
-         <div class="sidebar-brand-text mx-3">Online House Rental Management System</div>
+         <div class="sidebar-brand-text mx-3">OHRMS</div>
        </a>
 
        <!-- Divider -->
