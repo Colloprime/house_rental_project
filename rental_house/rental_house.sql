@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2023 at 09g:36 AM
+-- Generation Time: Nov 21, 2023 at 12:01 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -52,7 +52,8 @@ INSERT INTO `contract` (`contract_id`, `tenant_id`, `house_id`, `duration_month`
 (8, 9, 6, 6, 420000, 2, 70000, '2023-07-01', '2023-12-31', '2023-07-15 02:52:34', 'Active'),
 (9, 4, 2, 3, 120000, 1, 40000, '2023-08-01', '2023-07-20', '2023-07-19 03:12:17', 'Inactive'),
 (12, 10, 2, 12, 600000, 4, 50000, '2023-07-01', '2025-06-30', '2023-07-23 12:20:10', 'Inactive'),
-(15, 4, 7, 3, 60000, 1, 20000, '2023-08-01', '2023-10-31', '2023-08-04 00:18:11', 'Inactive');
+(15, 4, 7, 3, 60000, 1, 20000, '2023-08-01', '2023-10-31', '2023-08-04 00:18:11', 'Inactive'),
+(26, 11, 10, 6, 300000, 1, 300000, '2023-11-01', '2024-04-30', '2023-11-15 16:16:06', 'Inactive');
 
 -- --------------------------------------------------------
 
@@ -80,38 +81,30 @@ INSERT INTO `house` (`house_id`, `house_name`, `compartment`, `rent_per_month`, 
 (6, 'A30', 'Yes', 80000, 'Occupied'),
 (7, 'A40', 'No', 60000, 'Empty'),
 (8, 'B30', 'Yes', 70000, 'Empty'),
-(9, 'G56', 'Yes', 80000, 'Empty');
+(9, 'G56', 'Yes', 80000, 'Empty'),
+(10, 'NewBlock', 'Yes', 50000, 'Empty'),
+(11, 'Toloka', 'No', 50000, 'Empty');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `house1`
+-- Table structure for table `message`
 --
 
-CREATE TABLE `house1` (
-  `id` int(11) NOT NULL,
-  `owner_id` int(11) DEFAULT NULL,
-  `rooms` int(11) DEFAULT NULL,
-  `rate` int(11) DEFAULT NULL,
-  `pics` blob DEFAULT NULL,
-  `country` varchar(20) DEFAULT NULL,
-  `state` varchar(20) DEFAULT NULL,
-  `city` varchar(30) DEFAULT NULL,
-  `address` varchar(50) DEFAULT NULL,
-  `description` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `messages`
---
-
-CREATE TABLE `messages` (
-  `Msg_id` int(11) NOT NULL,
-  `sender` int(11) NOT NULL,
-  `msg content` int(11) NOT NULL
+CREATE TABLE `message` (
+  `id` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `message`
+--
+
+INSERT INTO `message` (`id`, `name`, `email`, `message`) VALUES
+(0, 'wdjdm', 'collinceprm@gmail.com', 'weedd'),
+(0, 'Collins Ominde', 'collinceprm@gmail.com', 'fgshdjh');
 
 -- --------------------------------------------------------
 
@@ -181,7 +174,7 @@ INSERT INTO `tenant` (`tenant_id`, `fname`, `lname`, `programme`, `reg_no`, `occ
 (6, 'Evans', 'Charo', 'BSIT', 'BSIT/444J/2019', 'Student', '0717812676', '0746553132', 'evans@gmail.com', '254, Mombasa', 'Mombasa', 'Makupa', 'Evans', '5f4dcc3b5aa765d61d8327deb882cf99', '2023-07-15', 1),
 (9, 'Andrew', 'Takeem', '', '', 'Manager', '0717812676', '0746553132', 'andrew@hotmail.com', '266, Mombasa', 'Mombasa', 'Mbaraki', 'Takeem', '5f4dcc3b5aa765d61d8327deb882cf99', '2023-07-15', 1),
 (10, 'Laura', 'Mean', '', '', 'Assistant Manager', '0717812676', '0746553132', 'laura@google.com', '267, Mombasa', 'Mombasa', 'Mtopanga', 'Laura', '5f4dcc3b5aa765d61d8327deb882cf99', '2023-07-23', 2),
-(11, 'Bob', 'Kirkman', '', '', 'Plumber', '0784565656', '0784565656', 'bob@gmail.com', '345, Mombasa', 'Mombasa', 'Tudor', 'Bob', '5f4dcc3b5aa765d61d8327deb882cf99', '2023-08-04', 3),
+(11, 'Bob', 'Kirkman', '', '', 'Plumber', '0784565656', '0784565656', 'bob@gmail.com', '345, Mombasa', 'Mombasa', 'Tudor', 'Bob', '5f4dcc3b5aa765d61d8327deb882cf99', '2023-08-04', 0),
 (19, 'Mike', 'New', '', '', 'staff', '0734515151', '0732424242', 'mike22@gmail.com', '24', 'Mombasa', 'Mombasa', 'New', '5f4dcc3b5aa765d61d8327deb882cf99', '2023-10-21', 0),
 (20, 'Brian', 'Ian', 'BTIT', 'bbbit', '', '0721201506', '0721201701', 'prm@gmail.com', '50300', 'Mombasa', 'Kenya', 'prm', '5f4dcc3b5aa765d61d8327deb882cf99', '2023-11-04', 0);
 
@@ -319,7 +312,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `name`, `role`, `pno`, `u_name`, `pword`, `date_reg`) VALUES
 (1, 'Prime', 'Administrator', '255717812676', 'Admin', '42f749ade7f9e195bf475f37a44cafcb', '2023-07-15'),
-(2, 'Collins Ominde', 'Manager', '255787966996', 'Collins', '42f749ade7f9e195bf475f37a44cafcb', '2023-08-09');
+(2, 'Collins Ominde', 'Manager', '255787966996', 'Collins', '42f749ade7f9e195bf475f37a44cafcb', '2023-08-09'),
+(3, 'Brian', 'Manager', '0734515151', 'Kibe', '42f749ade7f9e195bf475f37a44cafcb', '2023-11-13');
 
 --
 -- Indexes for dumped tables
@@ -389,13 +383,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `contract`
 --
 ALTER TABLE `contract`
-  MODIFY `contract_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `contract_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `house`
 --
 ALTER TABLE `house`
-  MODIFY `house_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `house_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -431,7 +425,7 @@ ALTER TABLE `tenant_out`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

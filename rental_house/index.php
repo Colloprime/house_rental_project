@@ -4,8 +4,8 @@ include 'conn.php';
 
 
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Online House Rental Management System</title>
@@ -28,10 +28,18 @@ include 'conn.php';
     <link rel="stylesheet" href="css1/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="rents.png">
-      <script>(function(w, d) { w.CollectId = "654a718120465d1aa0f19bde"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
-      
-  </head>
-  <body>
+    <script>(function(w, d) { w.CollectId = "654a718120465d1aa0f19bde"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
+    <style>
+        body {
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+        }
+        .container {
+            width: 100%; /* Set container width to 100% */
+        }
+    </style>
+</head>
+<body>
+    
     <!-- navbar-->
     <header class="header mb-5">
       <!--
@@ -267,5 +275,6 @@ include 'conn.php';
     <script src="vendor1/owl.carousel/owl.carousel.min.js"></script>
     <script src="vendor1/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
     <script src="js1/front.js"></script>
-  </body>
+    
+</body>
 </html>

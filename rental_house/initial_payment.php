@@ -248,7 +248,7 @@ if (isset($_POST['submit'])) {
 
          <!-- Nav Item - Charts -->
          <li class="nav-item">
-             <a class="nav-link" href="send-sms.php">
+             <a class="nav-link" href="msg_tenant.php">
                  <i class="fas fa-fw fa-comments"></i>
                  <span>Messaging</span></a>
          </li>
@@ -356,15 +356,9 @@ if (isset($_POST['submit'])) {
                      </tr>
                      <tr>
                        <td>
-                         Payment Method:
+                        Your PIN Number:
                        </td>
-                       <td>
-                          <select name="payment" id="payment">
-                            <option value="mpesa">Mpesa</option>
-                            <option value="equity">Equity</option>
-                            <option value="paypal">Paypal</option>
-                            <option value="payoneer">Payoneer</option>
-                          </select>
+                       <td><input type='password' class='form-control form-control-user' name='pin'></td>
                      </tr>
                      <tr>
                        <td>

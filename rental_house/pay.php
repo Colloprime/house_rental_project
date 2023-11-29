@@ -1,157 +1,4 @@
-
-<?php
-
-include_once "vendor/nexmo/Client.php";
-include_once "vendor/nexmo/Entity/HasEntityTrait.php";
-include_once "vendor/nexmo/client/Exception/Exception.php";
-include_once "vendor/nexmo/client/Exception/Request.php";
-include_once "vendor/nexmo/Entity/EntityInterface.php";
-include_once "vendor/nexmo/Message/MessageInterface.php";
-include_once "vendor/nexmo/Message/CollectionTrait.php";
-include_once "vendor/nexmo/Entity/RequestArrayTrait.php";
-include_once "vendor/nexmo/Entity/JsonResponseTrait.php";
-include_once "vendor/nexmo/Entity/Psr7Trait.php";
-include_once "vendor/nexmo/Message/Message.php";
-include_once "vendor/nexmo/client/ClientAwareInterface.php";
-include_once "vendor/nexmo/client/ClientAwareTrait.php";
-include_once "vendor/nexmo/Message/Client.php";
-include_once "vendor/nexmo/client/Factory/FactoryInterface.php";
-include_once "vendor/nexmo/client/Factory/MapFactory.php";
-include_once "vendor/nexmo/client/Credentials/CredentialsInterface.php";
-include_once "vendor/nexmo/client/Credentials/AbstractCredentials.php";
-include_once "vendor/nexmo/client/Credentials/Basic.php";
-require_once "vendor/autoload.php";
-
-
-session_start();
-include "conn.php";
-if(!$_SESSION['username']){
-  echo '<script>window.location.href = "login.php";</script>';
-  exit();
-}
-include 'connect.php';
-
-
-if (isset($_POST['submit'])) {
-  $uname = @$_SESSION['username'];
-  $query = "SELECT * FROM tenant WHERE u_name = '$uname' ";
-  $result = mysqli_query($con, $query);
-  $row=mysqli_fetch_assoc($result);
-  do{
-    $id = $row['tenant_id'];
-    $row = mysqli_fetch_assoc($result);
-  }while ($row);
-
-  $pno = $_POST['pno'];
-  $pno1 = $_POST['pno1'];
-  $amount= $_POST['amount'];
-  $pin = $_POST['pin'];
-  $from = $_POST['from'];
-  $to = $_POST['to'];
-  $sql = "SELECT * FROM user WHERE phone = '$pno'";
-  $query = mysqli_query($conn,$sql);
-  $row = mysqli_fetch_assoc($query);
-  do {
-    $amm = $row['amount'];
-    $pin_no = $row['pin_no'];
-    $user = $row['user_id'];
-    $row = mysqli_fetch_assoc($query);
-  } while ($row);
-
-
-  if (mysqli_num_rows($query) == 1) {
-    if ($pin != $pin_no) {
-      echo "Wrong PIN...";
-    }else {
-      if($amount > $amm ){
-        echo "Insufficient Amount: your balance is: Ksh. ".$amm;
-      }
-      else {
-        $sql1 = "SELECT * FROM user WHERE phone = '$pno1'";
-        $query1 = mysqli_query($conn,$sql1);
-        $row1 = mysqli_fetch_assoc($query1);
-        do {
-          $amm1 = $row1['amount'];
-          $rec = $row1['user_id'];
-          $row1 = mysqli_fetch_assoc($query1);
-        } while ($row1);
-        if(mysqli_num_rows($query1) == 0){
-          echo "The phone Number does not exist";
-        }else {
-          $balance = $amm - $amount;
-          $balance1  =  $amm1 + $amount;
-          $ref_no = rand(10000000000,99999999999);
-          $date = date('Y-m-d H:i:s');
-          $sql2 = "INSERT INTO transaction VALUES ('$ref_no','$user','$rec','$amount','$date')";
-          mysqli_query($conn,$sql2);
-          $sql3 = "INSERT INTO payment(`payment_id`, `tenant_id`, `ref_no`, `amount`, `pay_from`, `pay_to`, `date`) VALUES (' ','$id','$ref_no','$amount','$from','$to','$date')";
-          mysqli_query($con,$sql3);
-          $sql4 = "UPDATE user SET amount = '$balance' WHERE phone = '$pno'";
-          mysqli_query($conn,$sql4);
-          $sql5 = "UPDATE user SET amount = '$balance1' WHERE phone = '$pno1'";
-          mysqli_query($conn,$sql5);
-          mysqli_close($conn);
-          mysqli_close($con);
-
-          $basic  = new \Nexmo\Client\Credentials\Basic('855de446', 'iKYHA4zYzabA4VKb');
-          $client = new \Nexmo\Client($basic);
-
-
-          try {
-              $message = $client->message()->send([
-                  'to' => "$pno",
-                  'from' => '254733832287',
-                  'text' => "You have sent Ksh. ".number_format($amount)." to $pno1. Your balance is Ksh.".number_format($balance).". Ref. number: $ref_no on $date. Thank You."
-              ]);
-
-              $response = $message->getResponseData();
-
-              if($response['messages'][0]['status'] == 0) {
-                  echo "<script> alert('The message was sent successfully');</script>";
-              } else {
-                  echo "<script> alert('The message failed!!!');</script>";
-              }
-          } catch (Exception $e) {
-              echo "<script> alert('The message was not sent!!!');</script>";
-          }
-
-
-
-          try {
-              $message = $client->message()->send([
-                  'to' => "$pno1",
-                  'from' => '254733832287',
-                  'text' => "You have received Ksh. ".number_format($amount)." from $pno. Your balance is Ksh. ".number_format($balance1).". Ref. number: $ref_no on $date. Thank You."
-              ]);
-
-              $response = $message->getResponseData();
-
-              if($response['messages'][0]['status'] == 0) {
-                  echo "<script> alert('The message was sent successfully');</script>";
-              } else {
-                  echo "<script> alert('The message failed!!!');</script>";
-              }
-          } catch (Exception $e) {
-              echo "<script> alert('The message was not sent!!!');</script>";
-          }
-
-          echo "<script type='text/javascript'>alert('Payment has been performed successfully!');</script>";
-          echo '<style>body{display:none;}</style>';
-          echo '<script>window.location.href = "home.php";</script>';
-        }
-
-      }
-    }
-  }else {
-    echo "<script type='text/javascript'>alert('The number does not exist!');</script>";
-    echo '<style>body{display:none;}</style>';
-    echo '<script>window.location.href = "pay.php";</script>';
-  }
-
-}
- ?>
-
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
 
  <head>
@@ -276,22 +123,11 @@ if (isset($_POST['submit'])) {
              <!-- Nav Item - User Information -->
              <li class="nav-item dropdown no-arrow">
                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php
+                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
 
-                 $uname = @$_SESSION['username'];
-                 $query = "SELECT * FROM tenant WHERE u_name = '$uname' ";
-                 $result = mysqli_query($con, $query);
-                 $row=mysqli_fetch_assoc($result);
-                 do{
-                   $fname = $row['fname'];
-                   $lname = $row['lname'];
-                   $id = $row['tenant_id'];
-                   $full = $fname." ".$lname;
-                   echo $full;
 
-                   $row = mysqli_fetch_assoc($result);
-                 }while ($row);
-                 ?></span>
+                 
+                 </span>
                  <img class="img-profile rounded-circle" src="user.png">
                </a>
                <!-- Dropdown - User Information -->
@@ -310,125 +146,49 @@ if (isset($_POST['submit'])) {
          <!-- End of Topbar -->
 
          <!-- Begin Page Content -->
-         <div class="container-fluid">
-           <h1 class="h3 mb-2 text-gray-800" align="center">Rent Payment</h1>
+         <body oncontextmenu="return false" class="snippet-body">
+    <div class="container d-flex justify-content-center">
+      <div class="card mt-5 px-3 py-4">
+        <div class="d-flex flex-row justify-content-around">
+          <div class="mpesa"><span>Mpesa </span></div>
+          
+        </div>
+        <div class="media mt-4 pl-2">
+          <img src="mpesa.jpg" class="mr-3" height="50" />
+          <div class="media-body">
+            <h6 class="mt-1">Enter Amount & Number</h6>
+          </div>
+        </div>
+        <div class="media mt-3 pl-2">
+                          <!--bs5 input-->
 
-           <div class="card shadow mb-4">
-             <div class="card-body">
-               <div class="table-responsive">
-                 <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
-
-                   <tbody>
-                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method = "POST">
-                     <tr>
-                       <td>
-                         Your Phone Number: E.g; 254717******
-                       </td>
-                       <td><input type='text' class='form-control form-control-user' name='pno'></td>
-                     </tr>
-                     <tr>
-                       <td>
-                         Receipient's Phone Number:
-                       </td>
-                       <td><input type='text' class='form-control form-control-user' name='pno1' value="254733832287" readonly></td>
-                     </tr>
-                     <tr>
-                       <td>
-                         Payment Method:
-                       </td>
-                       <td>
-                          <select name="payment" id="payment">
-                            <option value="mpesa">Mpesa</option>
-                            <option value="equity">Equity</option>
-                            <option value="paypal">Paypal</option>
-                            <option value="payoneer">Payoneer</option>
-                          </select>
-                         
-                         </select></td>
-                     </tr>
-                     <tr>
-                       <td>
-                         Amount:
-                       </td>
-                       <td><input type='text' class='form-control form-control-user' name='amount'></td>
-                     </tr>
-                     <tr>
-                       <td>
-                         Payment From:
-                       </td>
-                       <td>
-                         <select class="custom-select" name="from" id="terms" style="width:300px;">
-                         <option value = "January <?php echo date('Y'); ?>">January <?php echo date('Y'); ?></option>
-                         <option value = "February <?php echo date('Y'); ?>">February <?php echo date('Y'); ?></option>
-                         <option value = "March <?php echo date('Y'); ?>">March <?php echo date('Y'); ?></option>
-                         <option value = "April <?php echo date('Y'); ?>">April <?php echo date('Y'); ?></option>
-                         <option value = "May <?php echo date('Y'); ?>">May <?php echo date('Y'); ?></option>
-                         <option value = "June <?php echo date('Y'); ?>">June <?php echo date('Y'); ?></option>
-                         <option value = "July <?php echo date('Y'); ?>">July <?php echo date('Y'); ?></option>
-                         <option value = "August <?php echo date('Y'); ?>">August <?php echo date('Y'); ?></option>
-                         <option value = "September <?php echo date('Y'); ?>">September <?php echo date('Y'); ?></option>
-                         <option value = "October <?php echo date('Y'); ?>">October <?php echo date('Y'); ?></option>
-                         <option value = "November <?php echo date('Y'); ?>">November <?php echo date('Y'); ?></option>
-                         <option value = "December <?php echo date('Y'); ?>">December <?php echo date('Y'); ?></option>
-                         <option value = "January <?php echo date('Y')+1; ?>">January <?php echo date('Y')+1; ?></option>
-                         <option value = "February <?php echo date('Y')+1; ?>">February <?php echo date('Y')+1; ?></option>
-                         <option value = "March <?php echo date('Y')+1; ?>">March <?php echo date('Y')+1; ?></option>
-                         <option value = "April <?php echo date('Y')+1; ?>">April <?php echo date('Y')+1; ?></option>
-                         <option value = "May <?php echo date('Y')+1; ?>">May <?php echo date('Y')+1; ?></option>
-                         <option value = "June <?php echo date('Y')+1; ?>">June <?php echo date('Y')+1; ?></option>
-                         <option value = "July <?php echo date('Y')+1; ?>">July <?php echo date('Y')+1; ?></option>
-                         <option value = "August <?php echo date('Y')+1; ?>">August <?php echo date('Y')+1; ?></option>
-                         <option value = "September <?php echo date('Y')+1; ?>">September <?php echo date('Y')+1; ?></option>
-                         <option value = "October <?php echo date('Y')+1; ?>">October <?php echo date('Y')+1; ?></option>
-                         <option value = "November <?php echo date('Y')+1; ?>">November <?php echo date('Y')+1; ?></option>
-                         <option value = "December <?php echo date('Y')+1; ?>">December <?php echo date('Y')+1; ?></option>
-                         </select>
-                       </td>
-                     </tr>
-                     <tr>
-                       <td>
-                         To:
-                       </td>
-                       <td>
-                         <select class="custom-select" name="to" id="terms" style="width:300px;">
-                         <option value = "January <?php echo date('Y'); ?>">January <?php echo date('Y'); ?></option>
-                         <option value = "February <?php echo date('Y'); ?>">February <?php echo date('Y'); ?></option>
-                         <option value = "March <?php echo date('Y'); ?>">March <?php echo date('Y'); ?></option>
-                         <option value = "April <?php echo date('Y'); ?>">April <?php echo date('Y'); ?></option>
-                         <option value = "May <?php echo date('Y'); ?>">May <?php echo date('Y'); ?></option>
-                         <option value = "June <?php echo date('Y'); ?>">June <?php echo date('Y'); ?></option>
-                         <option value = "July <?php echo date('Y'); ?>">July <?php echo date('Y'); ?></option>
-                         <option value = "August <?php echo date('Y'); ?>">August <?php echo date('Y'); ?></option>
-                         <option value = "September <?php echo date('Y'); ?>">September <?php echo date('Y'); ?></option>
-                         <option value = "October <?php echo date('Y'); ?>">October <?php echo date('Y'); ?></option>
-                         <option value = "November <?php echo date('Y'); ?>">November <?php echo date('Y'); ?></option>
-                         <option value = "December <?php echo date('Y'); ?>">December <?php echo date('Y'); ?></option>
-                         <option value = "January <?php echo date('Y')+1; ?>">January <?php echo date('Y')+1; ?></option>
-                         <option value = "February <?php echo date('Y')+1; ?>">February <?php echo date('Y')+1; ?></option>
-                         <option value = "March <?php echo date('Y')+1; ?>">March <?php echo date('Y')+1; ?></option>
-                         <option value = "April <?php echo date('Y')+1; ?>">April <?php echo date('Y')+1; ?></option>
-                         <option value = "May <?php echo date('Y')+1; ?>">May <?php echo date('Y')+1; ?></option>
-                         <option value = "June <?php echo date('Y')+1; ?>">June <?php echo date('Y')+1; ?></option>
-                         <option value = "July <?php echo date('Y')+1; ?>">July <?php echo date('Y')+1; ?></option>
-                         <option value = "August <?php echo date('Y')+1; ?>">August <?php echo date('Y')+1; ?></option>
-                         <option value = "September <?php echo date('Y')+1; ?>">September <?php echo date('Y')+1; ?></option>
-                         <option value = "October <?php echo date('Y')+1; ?>">October <?php echo date('Y')+1; ?></option>
-                         <option value = "November <?php echo date('Y')+1; ?>">November <?php echo date('Y')+1; ?></option>
-                         <option value = "December <?php echo date('Y')+1; ?>">December <?php echo date('Y')+1; ?></option>
-                         </select>
-                       </td>
-                     </tr>
-                     <tr>
-                     <td></td>
-                     <td><input class='btn btn-primary btn-user btn-lg' type='submit' name='submit' value='Pay'></td>
-                     </form>
-                     <tr>
-                    </tbody>
-                 </table>
-               </div>
-             </div>
-           </div>
-         </div>
+            <form class="row g-3" action="./stk_initiate.php" method="POST">
+            
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">Amount</label>
+                  <input type="text" class="form-control" name="amount" placeholder="Enter Amount">
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress2" class="form-label" >Phone Number</label>
+                  <input type="text" class="form-control" name="phone"  placeholder="Enter Phone Number">
+                </div>
+             
+                <div class="col-12">
+                  <button type="submit" class="btn btn-success" name="submit" value="submit">send</button>
+                </div>
+              </form>
+              <!--bs5 input-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
+    ></script>
+    <script type="text/javascript" src=""></script>
+    <script type="text/javascript" src=""></script>
+    <script type="text/Javascript"></script>
          <!-- /.container-fluid -->
 
        </div>

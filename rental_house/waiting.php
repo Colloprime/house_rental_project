@@ -1,7 +1,10 @@
 <?php
-include "session.php";
+session_start();
 include "conn.php";
-
+if(!$_SESSION['username']){
+  echo '<script>window.location.href = "login.php";</script>';
+  exit();
+}
  ?>
 
 
@@ -87,6 +90,17 @@ include "conn.php";
 
       </li>
       <hr class="sidebar-divider">
+
+
+        
+
+         <!-- Nav Item - Charts -->
+         <li class="nav-item">
+             <a class="nav-link">
+                 <i class="fas fa-fw fa-comments"></i>
+                 <span>Messaging</span></a>
+         </li>
+          <hr class="sidebar-divider">
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">

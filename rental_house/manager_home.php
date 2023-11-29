@@ -69,6 +69,14 @@ if(!$user && $role == 'Manager'){
       <hr class="sidebar-divider">
 
       <!-- Heading -->
+      <li class="nav-item">
+        <a class="nav-link" href="disply_msg.php">
+          <i class="fa fa-bell" aria-hidden="true"></i>
+          <span>notifications</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
@@ -96,9 +104,7 @@ if(!$user && $role == 'Manager'){
 
       </li>
 
-
-
-      <hr class="sidebar-divider d-none d-md-block">
+ <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -132,6 +138,7 @@ if(!$user && $role == 'Manager'){
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php
+
 
                 include "conn.php";
                 $uname = $_SESSION['username'];

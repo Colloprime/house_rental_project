@@ -89,6 +89,19 @@ if(!$_SESSION['username']){
 
       </li>
 
+        <hr class="sidebar-divider">
+
+         <!-- Nav Item - Charts -->
+         <li class="nav-item">
+             <a class="nav-link" href="msg_tenant.php">
+                 <i class="fas fa-fw fa-comments"></i>
+                 <span>Messaging</span></a>
+         </li>
+         
+
+
+
+
       <hr class="sidebar-divider">
       <li class="nav-item">
         <a class="nav-link" href="form_in.php">
@@ -105,6 +118,7 @@ if(!$_SESSION['username']){
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>Pay Here</span></a>
       </li>
+
 
       <!-- Nav Item - Tables -->
 
@@ -223,49 +237,85 @@ if(!$_SESSION['username']){
                   </thead>
                   <tbody>
                     <?php
-                    $query = "SELECT * FROM tenant WHERE u_name = '$uname' ";
-                    $result1 = mysqli_query($con, $query);
-                    $row=mysqli_fetch_assoc($result1);
+// Assuming $con is your database connection
 
-                    if ($row) {
-                      $id = $row['tenant_id'];
-                    do{
-                      $id = $row['tenant_id'];
-                      $row = mysqli_fetch_assoc($result1);
-                    }while ($row);
-                  }
+// Step 1: Fetch tenant information
+$query = "SELECT * FROM tenant WHERE u_name = '$uname'";
+$result1 = mysqli_query($con, $query);
 
-                    $sql = "SELECT * FROM contract WHERE tenant_id = '$id' AND status = 'Active'";
-                    $result = mysqli_query($con, $sql);
-                    $row = mysqli_fetch_assoc($result);
-                    $total = 0;
-                    do{
-                      $h_id = $row['house_id'];
-                      $dur = $row['duration_month'];
-                      $term = $row['terms'];
-                      $div = $dur/$term;
-                      $day = $row['start_day'];
-                      $day1  = date("Y-m-d", strtotime($day. "+ 2 days"));
-                      echo '<tr>';
-                      echo '<td>'.$day1.'</td>';
-                      echo '<td>'.number_format($row['rent_per_term']).'/=</td>';
-                      echo '<tr>';
-                      for ($i = $div; $i < $dur; $i += $div) {
-                        echo '<tr>';
-                        $date  = date("Y-m-d", strtotime("+".$i." months" , strtotime("$day")));
-                        $date1  = date("Y-m-d", strtotime($date. "+ 2 days"));
-                        echo '<td>'.$date1.'</td>';
-                        echo '<td>'.number_format($row['rent_per_term']).'/=</td>';
-                        echo '<tr>';
-                      }
+if ($result1) {
+    $row = mysqli_fetch_assoc($result1);
 
-                      echo '<tr><td><b><b><b>TOTAL</b></b></b></td><td>'.number_format($row['total_rent']).'/=</td></tr>';
+    if ($row) {
+        $id = $row['tenant_id'];
 
-                      $row = mysqli_fetch_assoc($result);
-                    }while ($row);
+        do {
+            $id = $row['tenant_id'];
+            $row = mysqli_fetch_assoc($result1);
+        } while ($row);
+    } else {
+        // Handle the case when no rows are returned for the tenant
+        // You might want to add an appropriate error message or take necessary action.
+    }
+} else {
+    // Handle the case when the query fails
+    // You might want to add an appropriate error message or take necessary action.
+}
 
+// Step 2: Fetch active contracts for the tenant
+$sql = "SELECT * FROM contract WHERE tenant_id = '$id' AND status = 'Active'";
+$result = mysqli_query($con, $sql);
 
-                     ?>
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+
+    if ($row) {
+        $total = 0;
+
+        do {
+            $h_id = $row['house_id'];
+            $dur = $row['duration_month'];
+            $term = $row['terms'];
+
+            // Check if $term is not zero to avoid division by zero
+            if ($term != 0) {
+                $div = $dur / $term;
+
+                $day = $row['start_day'];
+                $day1 = date("Y-m-d", strtotime($day . "+ 2 days"));
+
+                echo '<tr>';
+                echo '<td>' . $day1 . '</td>';
+                echo '<td>' . number_format($row['rent_per_term']) . '/=</td>';
+                echo '</tr>';
+
+                for ($i = $div; $i < $dur; $i += $div) {
+                    echo '<tr>';
+                    $date = date("Y-m-d", strtotime("+" . $i . " months", strtotime("$day")));
+                    $date1 = date("Y-m-d", strtotime($date . "+ 2 days"));
+                    echo '<td>' . $date1 . '</td>';
+                    echo '<td>' . number_format($row['rent_per_term']) . '/=</td>';
+                    echo '</tr>';
+                }
+
+                echo '<tr><td><b><b><b>TOTAL</b></b></b></td><td>' . number_format($row['total_rent']) . '/=</td></tr>';
+            }
+
+            $row = mysqli_fetch_assoc($result);
+        } while ($row);
+    } else {
+        // Handle the case when no active contracts are found for the tenant
+        // You might want to add an appropriate message or take necessary action.
+    }
+} else {
+    // Handle the case when the query for active contracts fails
+    // You might want to add an appropriate error message or take necessary action.
+}
+
+// Close your database connection if needed
+mysqli_close($con);
+?>
+
 
                   </tbody>
                 </table>

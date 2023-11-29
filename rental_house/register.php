@@ -25,7 +25,7 @@ if(isset($_POST["submit"])){
   $rpword = check($_POST['repeatPassword']);
   $price = $_POST['price'];
   $dur = $_POST['duration'];
-  $house_name = $_POST['house_name'];
+  #$house_name = $_POST['house_name'];
   $dur1 = $dur - 1;
   $term = (int)$_POST['term'];
   $contract = $_POST['contract'];
@@ -192,11 +192,11 @@ if(isset($_POST["submit"])){
 
                                 $last_id=mysqli_insert_id($con);
 
-                                $sql2= "INSERT INTO tenant_contacts VALUES (' ','$last_id','$cfname1','$clname1','$c_occu1','$nature1','$cpno1','$cpno3','$cemail1','$p_address1','$city1','$region1','$cfname2','$clname2','$c_occu2','$nature2','$cpno2','$cpno4', '$cemail2', '$p_address2', '$city2', '$region2')";
+                                $sql2= "INSERT INTO tenant_contacts VALUES ('$last_id','$cfname1','$clname1','$c_occu1','$nature1','$cpno1','$cpno3','$cemail1','$p_address1','$city1','$region1','$cfname2','$clname2','$c_occu2','$nature2','$cpno2','$cpno4', '$cemail2', '$p_address2', '$city2', '$region2')";
 
                                 mysqli_query($con, $sql2);
 
-                                $sql1 = "INSERT INTO contract VALUES (' ','$last_id', '$house','$dur','$total_rent','$term','$rent_per_term','$start_day', '$end_date', '$date_reg1', '$stat')";
+                                $sql1 = "INSERT INTO contract VALUES ('$contract_id','$dur','$total_rent','$term','$rent_per_term','$start_day', '$end_date', '$date_reg1', '$stat')";
 
                                 mysqli_query($con, $sql1);
 
@@ -213,8 +213,7 @@ if(isset($_POST["submit"])){
                                   echo "<script> alert('6 months cannot have more than 2 term.');</script>";
                                 }else {
                                   $pword = md5($pword);
-                                  $sql= "INSERT INTO tenant VALUES (' ','$fname','$lname','$prog','$reg','$occ','$pno1','$pno2','$email','$postal','$city','$region','$uname','$pword', '$date_reg', '$status')";
-
+                                  $sql= "INSERT INTO tenant VALUES ('$fname','$lname','$prog','$reg','$occ','$pno1','$pno2','$email','$postal','$city','$region','$uname','$pword', '$date_reg', '$status')";
                                   mysqli_query($con, $sql);
 
                                   $last_id=mysqli_insert_id($con);
@@ -223,7 +222,7 @@ if(isset($_POST["submit"])){
 
                                   mysqli_query($con, $sql2);
 
-                                  $sql1 = "INSERT INTO contract VALUES (' ','$last_id', '$house','$dur','$total_rent','$term','$rent_per_term','$start_day', '$end_date', '$date_reg1', '$stat')";
+                                  $sql1 = "INSERT INTO contract VALUES (' ','$last_id', '$house_name','$dur','$total_rent','$term','$rent_per_term','$start_day', '$end_date', '$date_reg1', '$stat')";
 
                                   mysqli_query($con, $sql1);
 
